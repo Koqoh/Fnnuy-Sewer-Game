@@ -6,23 +6,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private float moveSpeed;
+    [SerializeField] private float moveInput;
+    [SerializeField] private float moveSpeed;
 
-    [SerializeField]
-    private float moveInput;
+    [SerializeField] private int jumpsAvailable, maxJumps;
 
-    [SerializeField]
-    private int jumpsAvailable, maxJumps;
+    [SerializeField] private float jumpForce;
 
-    [SerializeField]
-    private bool onGround;
-
-    [SerializeField]
-    private float jumpForce;
-
-    [SerializeField]
-    private bool isGrounded;
+    [SerializeField] private bool isGrounded;
 
     [Header("Components")]
 
