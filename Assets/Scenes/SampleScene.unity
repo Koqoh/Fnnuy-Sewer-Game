@@ -196,8 +196,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveInput: 0
   moveSpeed: 5
-  jumpsAvailable: 0
-  maxJumps: 2
+  airJumpsAvailable: 0
+  maxAirJumps: 1
+  onGround: 0
   jumpForce: 8
   isGrounded: 0
   rb: {fileID: 290853064}

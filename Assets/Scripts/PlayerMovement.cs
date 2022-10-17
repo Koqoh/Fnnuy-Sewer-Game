@@ -9,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveInput;
     [SerializeField] private float moveSpeed;
 
-    [SerializeField] private int jumpsAvailable, maxJumps;
+    [SerializeField] private int airJumpsAvailable, maxAirJumps;
+
+    [SerializeField] private bool onGround;
 
     [SerializeField] private float jumpForce;
 
@@ -39,8 +41,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJumpInput(InputAction.CallbackContext context) {
         if(context.phase == InputActionPhase.Performed) {
-            if(jumpsAvailable > 0) {
-                jumpsAvailable--;
+            if(GetComponent<GroundCheck>().IsGrounded()) {
+                Jump();
+            } else if(airJumpsAvailable > 0) {
+                airJumpsAvailable--;
                 Jump();
             }
         }
@@ -48,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCollisionEnter2D() {
         if (GetComponent<GroundCheck>().IsGrounded()) {
-                jumpsAvailable = maxJumps;
+                airJumpsAvailable = maxAirJumps;
         }
     }
 }
