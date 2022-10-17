@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveInput;
     [SerializeField] private float moveSpeed;
 
-    [SerializeField] private int jumpsAvailable, maxJumps;
+    [SerializeField] private int jumpsAvailable, maxAirJumps;
 
     [SerializeField] private float jumpForce;
 
@@ -34,11 +34,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnMoveInput(InputAction.CallbackContext context) {
+        Debug.Log("move input recieved");
         moveInput = context.ReadValue<float>();
     }
 
     public void OnJumpInput(InputAction.CallbackContext context) {
+        Debug.Log("jump input called");
         if(context.phase == InputActionPhase.Performed) {
+            Debug.Log("jump input recieved");
             if(jumpsAvailable > 0) {
                 jumpsAvailable--;
                 Jump();
@@ -48,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCollisionEnter2D() {
         if (GetComponent<GroundCheck>().IsGrounded()) {
-                jumpsAvailable = maxJumps;
+                jumpsAvailable = 1 + maxAirJumps;
         }
     }
 }
