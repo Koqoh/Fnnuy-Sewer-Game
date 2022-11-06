@@ -35,9 +35,9 @@ public class PlayerMovement : MonoBehaviour
         Move();
         if (touchingGround) isGrounded = GetComponent<GroundCheck>().IsGrounded();
         if (isGrounded) {
-            coyoteTime = Time.time;
+            lastGrounded = Time.time;
         }
-        if (HasBufferedJump || HasCoyoteTime) Jump();
+        if (HasBufferedJump && HasCoyoteTime) Jump();
     }
     private void Move() {
         rb.velocity = new Vector2(moveInput * moveSpeed * Time.fixedDeltaTime, rb.velocity.y);
