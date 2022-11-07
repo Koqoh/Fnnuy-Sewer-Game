@@ -1,11 +1,41 @@
 fileFormatVersion: 2
-guid: 5a706ab006e95df41868ae4269a1118c
+guid: 5b2611fe4f86ea249ab8b5fd81c83485
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
+      74: 8093124858883854797
+    second: Joint|Shader NodetreeAction
+  - first:
+      74: -1889230279672205991
+    second: Arm segment|Shader NodetreeAction
+  - first:
+      74: -5345479611349387316
+    second: Arm segment.001|Shader NodetreeAction
+  - first:
+      74: -8561818740426763953
+    second: Arm segment.003|Shader NodetreeAction
+  - first:
+      74: 4972758021597430389
+    second: Joint.003|Shader NodetreeAction
+  - first:
+      74: -7030042072469822519
+    second: Eye|Shader NodetreeAction
+  - first:
+      74: -78736315327977006
+    second: metarig|metarigAction.004
+  - first:
+      74: -5980111370788615050
+    second: metarig|Shader NodetreeAction
+  - first:
       74: 6200578666267062213
     second: run
+  - first:
+      74: 6144204302869600065
+    second: run.001
+  - first:
+      74: 3856383357963620136
+    second: run.002
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -34,12 +64,41 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: run.002
+      takeName: run.002
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 3
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
@@ -55,7 +114,7 @@ ModelImporter:
     keepQuads: 0
     weldVertices: 1
     bakeAxisConversion: 0
-    preserveHierarchy: 0
+    preserveHierarchy: 1
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
@@ -100,7 +159,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0

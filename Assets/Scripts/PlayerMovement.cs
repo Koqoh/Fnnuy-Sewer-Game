@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private bool touchingGround;
     [SerializeField] private bool isGrounded;
+    [SerializeField] Animator animator;
 
     private bool HasBufferedJump => lastJumpPressed + jumpBuffer > Time.time;
     private bool HasCoyoteTime => lastGrounded + coyoteTime > Time.time;
@@ -41,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Move() {
         rb.velocity = new Vector2(moveInput * moveSpeed * Time.fixedDeltaTime, rb.velocity.y);
+        animator.SetFloat("Speed",rb.velocity.x);
     }
 
     private void Jump() {
@@ -78,4 +80,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnValidate() {
         groundLayerTrue = new BitArray(new int[]{groundLayer.value}).Cast<bool>().ToArray();
     }
+
+    //cordon for animation methods
+    void Face(int direction) {
+        transform.localRotation = new Quaternion(0,1,0,direction*90);
+    }
+    //cordon over
 }
