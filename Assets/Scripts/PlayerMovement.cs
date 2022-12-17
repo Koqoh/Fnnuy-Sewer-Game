@@ -6,13 +6,19 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
+
+//Brendan can you please comment this script my brain is small and I have forgotten how anything works
+
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private bool[] groundLayerTrue;
 
     [SerializeField] private float moveInput;
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float acceleration; //move speed
+    [SerializeField] private float decceleration; //??
+    [SerializeField] private Vector2 velocity;
+    [SerializeField] private float moveCap;
 
     [SerializeField] private float lastJumpPressed;
     [SerializeField] private float jumpBuffer;
@@ -41,7 +47,11 @@ public class PlayerMovement : MonoBehaviour
         if (HasBufferedJump && HasCoyoteTime) Jump();
     }
     private void Move() {
-        rb.velocity = new Vector2(moveInput * moveSpeed * Time.fixedDeltaTime, rb.velocity.y);
+        //if(rb.velocity.x < moveCap)
+        velocity.x = moveInput * acceleration * Time.fixedDeltaTime;
+        velocity.y = rb.velocity.y;
+        rb.velocity = velocity;
+
         animator.SetFloat("Speed",rb.velocity.x);
     }
 
@@ -49,6 +59,10 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
+
+    //afaik how these Callback contexts work is
+    //Player inputs, moveinput is stored from that, and the movement script is also called after
+    //perhaps
 
     public void OnMoveInput(InputAction.CallbackContext context) {
         Debug.Log("move input recieved");

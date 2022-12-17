@@ -295,7 +295,10 @@ MonoBehaviour:
     m_Bits: 128
   groundLayerTrue: 0000000000000001000000000000000000000000000000000000000000000000
   moveInput: 0
-  moveSpeed: 200
+  acceleration: 200
+  decceleration: 0
+  velocity: {x: 0, y: 0}
+  moveCap: 0
   lastJumpPressed: -1
   jumpBuffer: 0.2
   lastGrounded: 0
