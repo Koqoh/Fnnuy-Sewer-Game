@@ -245,9 +245,9 @@ MonoBehaviour:
     m_ActionName: Player/MoveHorizontal[/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 290853073}
-        m_TargetAssemblyTypeName: FireRay, Assembly-CSharp
-        m_MethodName: FireViolinRay
+      - m_Target: {fileID: 290853071}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+        m_MethodName: OnFireViolinRay
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -325,10 +325,11 @@ MonoBehaviour:
   touchingGround: 0
   isGrounded: 0
   animator: {fileID: 290853072}
+  violin: {fileID: 1809459830}
   rb: {fileID: 290853064}
 --- !u!95 &290853072
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -345,7 +346,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &290853073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,7 +354,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290853062}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e577673fff53144982ed3c386106551, type: 3}
   m_Name: 

@@ -9,7 +9,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 //Brendan can you please comment this script my brain is small and I have forgotten how anything works
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private bool[] groundLayerTrue;
@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool touchingGround;
     [SerializeField] private bool isGrounded;
     [SerializeField] Animator animator;
+    [SerializeField] GameObject violin;
 
     private bool HasBufferedJump => lastJumpPressed + jumpBuffer > Time.time;
     private bool HasCoyoteTime => lastGrounded + coyoteTime > Time.time;
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
 
     private void FixedUpdate() {
+        FireViolinRay();
         Move();
         if (touchingGround) isGrounded = GetComponent<GroundCheck>().IsGrounded();
         if (isGrounded) {
@@ -47,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
         if (HasBufferedJump && HasCoyoteTime) Jump();
     }
     private void Move() {
-        //if(rb.velocity.x < moveCap)
         velocity.x = moveInput * acceleration * Time.fixedDeltaTime;
         velocity.y = rb.velocity.y;
         rb.velocity = velocity;
@@ -59,6 +60,11 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
+    private void FireViolinRay() {
+        Debug.Log("ray casted");
+        Physics2D.Raycast(violin.transform.position, Mouse.current.position.ReadValue());
+    }
+
 
     //afaik how these Callback contexts work is
     //Player inputs, moveinput is stored from that, and the movement script is also called after
@@ -75,6 +81,11 @@ public class PlayerMovement : MonoBehaviour
         if(context.phase == InputActionPhase.Performed) {
             Debug.Log("jump input recieved");
             lastJumpPressed = Time.time;
+        }
+    }
+    public void OnFireViolinRay(InputAction.CallbackContext context) {
+        if(context.phase == InputActionPhase.Performed) {
+            Debug.Log("Ray cast recieved");
         }
     }
 
