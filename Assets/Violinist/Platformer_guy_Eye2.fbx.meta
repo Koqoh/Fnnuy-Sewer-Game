@@ -4,17 +4,44 @@ ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
-      74: 6200578666267062213
-    second: run
-  - first:
-      74: -3012361547672260724
-    second: run (1)
-  - first:
       74: 6144204302869600065
     second: run.001
   - first:
-      74: 5539831331247536789
-    second: Jump
+      74: -3100369314251171874
+    second: Idle
+  - first:
+      74: 6200578666267062213
+    second: run
+  - first:
+      74: 3429302970569930822
+    second: metarig_deform|Idle
+  - first:
+      74: -700887554006938235
+    second: metarig_deform|Jump
+  - first:
+      74: -1266471410938228442
+    second: metarig_deform|run
+  - first:
+      74: 1554238210807380387
+    second: metarig_deform|run.001
+  - first:
+      74: -5324238279805231817
+    second: metarig|Idle
+  - first:
+      74: 3819204733282340162
+    second: metarig|Jump
+  - first:
+      74: -5297019649661602221
+    second: metarig|run
+  - first:
+      74: 329541911111985616
+    second: metarig|run.001
+  - first:
+      74: 5005480686489658832
+    second: run.001 (1)
+  - first:
+      74: -3012361547672260724
+    second: run - use this one
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -45,11 +72,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Jump
-      takeName: Jump
+      name: Idle
+      takeName: Idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 50
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -57,6 +84,35 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: run.001
+      takeName: run.001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -106,7 +162,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 3
+    meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
@@ -167,7 +223,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0

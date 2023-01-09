@@ -7,27 +7,27 @@ using UnityEngine.InputSystem;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 
-//Brendan can you please comment this script my brain is small and I have forgotten how anything works
+//k  so any important logic from here should be moved to the player script and various parts of the statemachine  please and thank you
 
-public class PlayerInput : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private bool[] groundLayerTrue;
 
-    [SerializeField] private float moveInput;
+    [SerializeField] public float moveInput { get; private set; }
     [SerializeField] private float acceleration; //move speed
     [SerializeField] private float decceleration; //??
     [SerializeField] private Vector2 velocity;
     [SerializeField] private float moveCap;
 
-    [SerializeField] private float lastJumpPressed;
+    [SerializeField] public static float lastJumpPressed;
     [SerializeField] private float jumpBuffer;
     [SerializeField] private float lastGrounded;
     [SerializeField] private float coyoteTime;
     [SerializeField] private float jumpForce;
 
     [SerializeField] private bool touchingGround;
-    [SerializeField] private bool isGrounded;
+    [SerializeField] private bool isGrounded = false;
     [SerializeField] Animator animator;
     [SerializeField] GameObject violin;
 
@@ -56,37 +56,12 @@ public class PlayerInput : MonoBehaviour
         animator.SetFloat("Speed",rb.velocity.x);
     }
 
-    private void Jump() {
+    private void Jump() { 
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
     private void FireViolinRay() {
-        Debug.Log("ray casted");
         Physics2D.Raycast(violin.transform.position, Mouse.current.position.ReadValue());
-    }
-
-
-    //afaik how these Callback contexts work is
-    //Player inputs, moveinput is stored from that, and the movement script is also called after
-    //perhaps
-
-    public void OnMoveInput(InputAction.CallbackContext context) {
-        Debug.Log("move input recieved");
-        if (context.phase is InputActionPhase.Performed or InputActionPhase.Canceled) {
-            moveInput = context.ReadValue<float>();
-        }
-    }
-
-    public void OnJumpInput(InputAction.CallbackContext context) {
-        if(context.phase == InputActionPhase.Performed) {
-            Debug.Log("jump input recieved");
-            lastJumpPressed = Time.time;
-        }
-    }
-    public void OnFireViolinRay(InputAction.CallbackContext context) {
-        if(context.phase == InputActionPhase.Performed) {
-            Debug.Log("Ray cast recieved");
-        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {
