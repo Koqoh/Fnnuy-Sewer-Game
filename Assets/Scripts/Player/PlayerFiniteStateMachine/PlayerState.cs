@@ -9,6 +9,8 @@ public class PlayerState
     protected Player player; //reference to the player
     protected PlayerStateMachine stateMachine; //reference to the player state machine
     protected PlayerData playerData; //reference to player data, scriptable object that controls all the variable the player has
+
+    protected bool isAnimationFinished;
     
     protected float startTime; //gets set every time we enter a state, used to provide a reference for how long we've been in a specific state
     
@@ -29,6 +31,7 @@ public class PlayerState
         player.Anim.SetBool(animBoolName, true);
         startTime = Time.time;
         Debug.Log(animBoolName);
+        isAnimationFinished = false;
     }
 
     //called when leaving the state
@@ -47,7 +50,9 @@ public class PlayerState
     }
 
     //called from PhysicsUpdate and from Enter, put stuff here like looking for ground or walls
-    public virtual void DoChecks(){
-        
-    }
+    public virtual void DoChecks(){ }
+
+    public virtual void AnimationTrigger(){ } //used if we want to trigger something in the middle of an animation
+
+    public virtual void AnimationFinishTrigger() => isAnimationFinished = true;
  }

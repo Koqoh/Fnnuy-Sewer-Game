@@ -37,9 +37,13 @@ public class PlayerInAirState : PlayerState
 
         if(isGrounded && player.CurrentVelocity.y < 0.01f)
             stateMachine.ChangeState(player.LandState);
-        else
+        else{
             player.CheckIfShouldFlip(xInput);
             player.SetVelocityX(playerData.moveSpeed * xInput);
+
+            player.Anim.SetFloat("yVelocity", player.CurrentVelocity.y);
+            player.Anim.SetFloat("xVelocity", Mathf.Abs(player.CurrentVelocity.y));
+        }
     }
 
     public override void PhysicsUpdate()
