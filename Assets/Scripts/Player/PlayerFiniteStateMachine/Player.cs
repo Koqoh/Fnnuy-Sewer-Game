@@ -105,6 +105,10 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Other Functions
+
+    private void AnimationTrigger() => StateMachine.CurrentState.AnimationTrigger();
+    private void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
+
     private void Flip(){
         facingDirection *= -1;
         meshTransform.rotation = Quaternion.Euler(0, 120 * facingDirection, 0);
