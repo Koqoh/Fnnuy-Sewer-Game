@@ -7,17 +7,15 @@ using UnityEngine.InputSystem;
 
 public class FireRay : MonoBehaviour
 {
-     public GameObject violin;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject violin;
+    public Material material;
+    SoundBeam beam;
 
     // Update is called once per frame
     void Update()
     {
-        
+        Destroy(GameObject.Find("Aim Beam"));
+        beam = new SoundBeam(gameObject.transform.position, gameObject.transform.right, material);
     }
 
     public void FireViolinRay(InputAction.CallbackContext context)
