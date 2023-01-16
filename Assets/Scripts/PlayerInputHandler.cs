@@ -17,6 +17,14 @@ public class PlayerInputHandler : MonoBehaviour
     public int NormalizedInputY { get; private set; } //please don't fuck with y we need it if we want air strafing with the grapple
     public bool JumpInput { get; private set; }
 
+    [SerializeField] private float inputHoldTime = 0.02f;
+
+    private float jumpInputStartTime;
+
+    private void Update() {
+        CheckJumpInputHoldTime();
+    }
+
     //afaik how these Callback contexts work is
     //Player inputs, moveinput is stored from that, and the movement script is also called after
     //perhaps
@@ -34,12 +42,19 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnJumpInput(InputAction.CallbackContext context) {
         if(context.phase == InputActionPhase.Performed) {
             //Debug.Log("jump input recieved");
-            //PlayerMovement.lastJumpPressed = Time.time;
+            
             JumpInput = true;
+            jumpInputStartTime = Time.time;
         }
     }
 
-    public void UseJumpInput() => JumpInput = false; //something  something  to prevent jump problems by only doing it once  bite me  its late
+    public void UseJumpInput() => JumpInput = false; 
+
+    private void CheckJumpInputHoldTime() {
+        if(Time.time >= jumpInputStartTime + inputHoldTime){
+            JumpInput = false;
+        }
+    }
 
     public void OnFireViolinRay(InputAction.CallbackContext context) {
         if(context.phase == InputActionPhase.Performed) {

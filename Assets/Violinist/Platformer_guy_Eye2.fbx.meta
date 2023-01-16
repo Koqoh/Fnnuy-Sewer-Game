@@ -153,7 +153,7 @@ ModelImporter:
       - time: 1
         functionName: AnimationFinishTrigger
         data: 
-        objectReferenceParameter: {fileID: 2119552163625053337, guid: 25095c47f27e6d8488bbdcae35696a56, type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -477,7 +477,7 @@ ModelImporter:
       curves: []
       events:
       - time: 1
-        functionName: AnimationFinishTrigger()
+        functionName: AnimationFinishTrigger
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: e24f9470fa3063d4a89da64d1284490a, type: 3}
         floatParameter: 0
